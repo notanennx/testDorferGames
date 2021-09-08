@@ -12,8 +12,8 @@ public class DummySpawner : MonoBehaviour
     // Start
     void Start()
     {
-        Material[] dummyMaterials = Resources.LoadAll<Material>("Materials/Colors");
-        SpawnCluster(dummyMaterials[Random.Range(0, dummyMaterials.Length)]);
+        //Material[] dummyMaterials = Resources.LoadAll<Material>("Materials/Colors");
+        SpawnCluster(ColorsManager.i.currentPool[Random.Range(0, ColorsManager.i.currentPool.Count)]);
     }
 
     // Spawn Dummy
