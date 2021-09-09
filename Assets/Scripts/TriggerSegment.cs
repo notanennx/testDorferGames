@@ -5,7 +5,7 @@ using UnityEngine;
 public class TriggerSegment : MonoBehaviour
 {
     private bool isTriggered = false;
-    [SerializeField] private GameObject spawnPoint;
+    [SerializeField] private Transform spawnPos;
     [SerializeField] private GameObject destroyParent;
 
     // OnTriggerEnter
@@ -17,7 +17,8 @@ public class TriggerSegment : MonoBehaviour
             {
                 isTriggered = true;
 
-                SegmentsManager.i.CreateRandom(spawnPoint.transform.position);
+                // Segment
+                SegmentsManager.i.CreateSegment(spawnPos.position);
                 SegmentsManager.i.ToRemove = destroyParent;
             }
         }

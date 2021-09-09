@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
             Vector3 newPos = (curPos + new Vector3(0f, 0f, posDiff));
             snake.transform.localPosition = Vector3.Lerp(curPos, newPos, (sideLerp * Time.deltaTime));
 
-            print(0.5 * (mousePos.x - snakePos.x));
+            //print(0.5 * (mousePos.x - snakePos.x));
 
             // Forward
             transform.Translate((-Vector3.right * (forwardSpeed * Time.deltaTime)));
