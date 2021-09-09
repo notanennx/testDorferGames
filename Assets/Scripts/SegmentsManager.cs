@@ -17,7 +17,7 @@ public class SegmentsManager : MonoBehaviour
     [HideInInspector] public GameObject[] SegmentsPool;
     private void Start()
     {
-        SegmentsPool = Resources.LoadAll<GameObject>("Prefabs/Segments");
+        SegmentsPool = Resources.LoadAll<GameObject>("Prefabs/Segments/Pool");
     }
 
     // Create
@@ -33,7 +33,7 @@ public class SegmentsManager : MonoBehaviour
             segmentsPassed = 0;
 
             // Checkpoint
-            GameObject newCheckpoint = Instantiate(Resources.Load<GameObject>("Prefabs/Checkpoint Segment"), position, Quaternion.identity);
+            GameObject newCheckpoint = Instantiate(Resources.Load<GameObject>("Prefabs/Segments/Checkpoint Segment"), position, Quaternion.identity);
                 newCheckpoint.transform.parent = GameObject.Find("Levels").transform;
         }
         else

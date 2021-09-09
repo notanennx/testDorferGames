@@ -21,7 +21,7 @@ public class DummySpawner : MonoBehaviour
         int attempts = 16;
         while (attempts > 0)
         {
-            Vector3 newPos = transform.position + (new Vector3(Random.Range(-1f, 1f), 0.50f, Random.Range(-1f, 1f)));
+            Vector3 newPos = transform.position + (new Vector3(Random.Range(-1f, 1f), 0.75f, Random.Range(-1f, 1f)));
             if (!Physics.CheckCapsule(newPos, newPos, 0.25f))
             { 
                 GameObject newDummy = Instantiate(dummyObject, newPos, transform.rotation, transform);

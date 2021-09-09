@@ -4,25 +4,32 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] [Range(0.01f, 1f)] private float sideLerp = 0.16f;
+    [SerializeField] public GameObject Snake;
     [SerializeField] private float forwardSpeed = 16f;
-    [SerializeField] private GameObject snake;
+    [SerializeField] [Range(0.01f, 1f)] private float sideLerp = 0.16f;
     private float roadWidth = 4f;
 
+    // Awake
+    public static PlayerController i;
+    private void Awake()
+    {
+        i = this;
+    }
+
     // Update
-    void Update()
+    private void Update()
     {
         if (Input.GetMouseButton(0))
         {
             // Get
             Vector3 mousePos = Input.mousePosition;
-            Vector3 snakePos = Camera.main.WorldToScreenPoint(snake.transform.position);
+            Vector3 snakePos = Camera.main.WorldToScreenPoint(Snake.transform.position);
 
             // Moving
             float posDiff = (mousePos.x - snakePos.x);
-            Vector3 curPos = snake.transform.localPosition;
+            Vector3 curPos = Snake.transform.localPosition;
             Vector3 newPos = (curPos + new Vector3(0f, 0f, posDiff));
-            snake.transform.localPosition = Vector3.Lerp(curPos, newPos, (sideLerp * Time.deltaTime));
+            Snake.transform.localPosition = Vector3.Lerp(curPos, newPos, (sideLerp * Time.deltaTime));
 
             //print(0.5 * (mousePos.x - snakePos.x));
 
@@ -30,7 +37,7 @@ public class PlayerController : MonoBehaviour
             transform.Translate((-Vector3.right * (forwardSpeed * Time.deltaTime)));
 
             // Clamping
-            snake.transform.localPosition = new Vector3(0f, 0.5f, Mathf.Clamp(snake.transform.localPosition.z, -roadWidth, roadWidth));
+            Snake.transform.localPosition = new Vector3(0f, 0.5f, Mathf.Clamp(Snake.transform.localPosition.z, -roadWidth, roadWidth));
         }
     }
 }
