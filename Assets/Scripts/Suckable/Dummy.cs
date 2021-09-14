@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Dummy : MonoBehaviour, ICollectable
+public class Dummy : Suckable
 {
     // Start
     private Material material;
@@ -12,16 +12,15 @@ public class Dummy : MonoBehaviour, ICollectable
         material = GetComponent<MeshRenderer>().material;
     }
 
-    // OnCollected
-    void ICollectable.OnCollected()
+    // On Sucked
+    public override void OnSucked()
     {
         MeshRenderer snakeMesh = PlayerController.i.Snake.GetComponent<MeshRenderer>();
         if (snakeMesh.material.name == material.name)
         {
-            print("Good!");
             Score.i.Dummies += 1;
 
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         else
         {

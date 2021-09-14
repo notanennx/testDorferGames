@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Bomb : MonoBehaviour, ICollectable
+public class Bomb : MonoBehaviour, IObstacle
 {
     // OnCollected
-    void ICollectable.OnCollected()
+    void IObstacle.OnBumped()
     {
         print("BOOMB!");
         SceneManager.LoadScene("Game");

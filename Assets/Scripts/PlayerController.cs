@@ -40,4 +40,16 @@ public class PlayerController : MonoBehaviour
             Snake.transform.localPosition = new Vector3(0f, 0.5f, Mathf.Clamp(Snake.transform.localPosition.z, -roadWidth, roadWidth));
         }
     }
+
+    /*
+    // On Trigger Enter
+    private void OnTriggerEnter(Collider other)
+    {
+        ISuckable collectable = other.gameObject.GetComponent<ISuckable>();
+        if (collectable != null)
+        {
+            collectable.OnSucked();
+        }
+    }
+    */
 }

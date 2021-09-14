@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gem : MonoBehaviour, ICollectable
+public class Gem : Suckable
 {
     // Start
     private float speed;
+    
     [SerializeField] private Transform model;
     private void Start()
     {
@@ -19,10 +20,10 @@ public class Gem : MonoBehaviour, ICollectable
         transform.Rotate(0, (speed * Time.deltaTime), 0, Space.Self);
     }
 
-    // OnCollected
-    void ICollectable.OnCollected()
+    // On Sucked
+    public override void OnSucked()
     {
         Score.i.Gems += 1;
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }
