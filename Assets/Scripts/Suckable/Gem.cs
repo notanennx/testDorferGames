@@ -24,6 +24,6 @@ public class Gem : Suckable
     public override void OnSucked()
     {
         Score.i.Gems += 1;
-        //Destroy(gameObject);
+        Events.i.OnGemCollected?.Invoke();
     }
 }

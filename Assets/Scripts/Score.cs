@@ -5,7 +5,7 @@ using UnityEngine;
 public class Score : MonoBehaviour
 {
     public static Score i;
-
+    
     // Init
     public int Gems = 0;
     public int Dummies = 0;
@@ -14,17 +14,5 @@ public class Score : MonoBehaviour
     private void Awake()
     {
         i = this;
-    }
-
-    // Start
-    void Start()
-    {
-        
-    }
-
-    // Update
-    void Update()
-    {
-        
     }
 }

@@ -19,8 +19,7 @@ public class Dummy : Suckable
         if (snakeMesh.material.name == material.name)
         {
             Score.i.Dummies += 1;
-
-            //Destroy(gameObject);
+            Events.i.OnDummyCollected?.Invoke();
         }
         else
         {
