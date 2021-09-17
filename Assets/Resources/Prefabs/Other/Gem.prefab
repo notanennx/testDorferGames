@@ -75,6 +75,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfcc8d2730152040a90ff51e7b09539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsSucked: 0
+  IsSuckable: 1
   model: {fileID: 5280760675842566152}
 --- !u!1001 &5280760675842699912
 PrefabInstance:

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Sucker : MonoBehaviour
 {
-    [SerializeField] private float suckSpeed = 8f;
+    [SerializeField] private float suckSpeed = 32f;
     [SerializeField] private float destroyDistance = 0.16f;
     [SerializeField] private Transform snakeHead;
     [SerializeField] private List<Transform> suckPool;
@@ -44,27 +44,48 @@ public class Sucker : MonoBehaviour
     }
 
     // Rescale
+    private float scaleSpeed = (0.95f);
     private void Rescale(Transform target, float speed)
     {
+        // Setup
         Vector3 newScale = new Vector3();
-            newScale.x = Mathf.Max(0f, target.localScale.x - speed);
-            newScale.y = Mathf.Max(0f, target.localScale.y - speed);
-            newScale.z = Mathf.Max(0f, target.localScale.z - speed);
+            newScale.x = Mathf.Max(0f, (scaleSpeed * target.localScale.x));
+            newScale.y = Mathf.Max(0f, (scaleSpeed * target.localScale.y));
+            newScale.z = Mathf.Max(0f, (scaleSpeed * target.localScale.z));
 
         // Apply
         target.localScale = newScale;
     }
 
     // OnTriggerEnter
+    [SerializeField] private Transform suckerHolder;
     private void OnTriggerEnter(Collider other)
     {
         Suckable suckable = other.gameObject.GetComponent<Suckable>();
-        if ((suckable != null) && (!suckable.IsSucked))
+        if (suckable)
         {
-            suckPool.Add(other.gameObject.transform);
-            suckable.OnSucked();
+            // Swallow everything!
+            if (Fever.i.IsActive)
+            {
+                if (!suckable.IsSucked)
+                {
+                    suckPool.Add(other.gameObject.transform);
+                    suckable.OnSucked(suckerHolder);
 
-            suckable.IsSucked = true;
+                    suckable.IsSucked = true;
+                }
+            }
+            // 
+            else
+            {
+                if ((!suckable.IsSucked) && (suckable.IsSuckable))
+                {
+                    suckPool.Add(other.gameObject.transform);
+                    suckable.OnSucked(suckerHolder);
+
+                    suckable.IsSucked = true;
+                }
+            }
         }
     }
 }

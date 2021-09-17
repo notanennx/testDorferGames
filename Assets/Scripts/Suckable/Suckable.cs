@@ -4,8 +4,13 @@ using UnityEngine;
 
 public abstract class Suckable : MonoBehaviour
 {
-    public bool IsSucked;
+    public bool IsSuckable;
+    [HideInInspector] public bool IsSucked;
 
     // On Sucked
-    public abstract void OnSucked();
+    public virtual void OnSucked(Transform suckerTransform)
+    {
+        transform.SetParent(suckerTransform);
+        //Destroy(gameObject, 0.2f); // Destroying again just in case!
+    }
 }

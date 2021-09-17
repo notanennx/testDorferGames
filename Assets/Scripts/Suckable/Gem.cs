@@ -21,8 +21,10 @@ public class Gem : Suckable
     }
 
     // On Sucked
-    public override void OnSucked()
+    public override void OnSucked(Transform suckerTransform)
     {
+        base.OnSucked(suckerTransform);
+
         Score.i.Gems += 1;
         Events.i.OnGemCollected?.Invoke();
     }

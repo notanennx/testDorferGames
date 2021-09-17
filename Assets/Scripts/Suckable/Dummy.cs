@@ -13,10 +13,12 @@ public class Dummy : Suckable
     }
 
     // On Sucked
-    public override void OnSucked()
+    public override void OnSucked(Transform suckerTransform)
     {
-        MeshRenderer snakeMesh = PlayerController.i.Snake.GetComponent<MeshRenderer>();
-        if (snakeMesh.material.name == material.name)
+        base.OnSucked(suckerTransform);
+
+        MeshRenderer snakeMesh = Snake.i.GetComponent<MeshRenderer>();
+        if ((Fever.i.IsActive) || (snakeMesh.material.name == material.name))
         {
             Score.i.Dummies += 1;
             Events.i.OnDummyCollected?.Invoke();

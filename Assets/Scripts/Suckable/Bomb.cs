@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Bomb : MonoBehaviour, IObstacle
+public class Bomb : Suckable, IObstacle
 {
     // OnCollected
     void IObstacle.OnBumped()
     {
-        print("BOOMB!");
-        SceneManager.LoadScene("Game");
+        if (!Fever.i.IsActive)
+        {
+            print("BOOMB!");
+            SceneManager.LoadScene("Game");
+        }
     }
 }

@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class SegmentsManager : MonoBehaviour
 {
-    public static SegmentsManager i;
-
     // Awake
-    private void Awake()
-    {
-        i = this;
-    }
+    public static SegmentsManager i;
+    private void Awake() => i = this;
 
     // Start
     [HideInInspector] public GameObject ToRemove;
