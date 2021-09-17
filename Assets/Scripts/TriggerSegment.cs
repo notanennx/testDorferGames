@@ -11,16 +11,14 @@ public class TriggerSegment : MonoBehaviour
     // OnTriggerEnter
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.tag == "Player")
+        Snake snakeScript = collider.gameObject.GetComponent<Snake>();
+        if ((snakeScript) && (!isTriggered))
         {
-            if (!isTriggered)
-            {
-                isTriggered = true;
+            isTriggered = true;
 
-                // Segment
-                SegmentsManager.i.CreateSegment(spawnPos.position);
-                SegmentsManager.i.ToRemove = destroyParent;
-            }
+            // Segment
+            SegmentsManager.i.CreateSegment(spawnPos.position);
+            SegmentsManager.i.ToRemove = destroyParent;
         }
     }
 }

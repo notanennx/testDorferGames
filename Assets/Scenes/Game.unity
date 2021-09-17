@@ -753,6 +753,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &831470022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 831470023}
+  m_Layer: 7
+  m_Name: Connector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &831470023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831470022}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1808968355}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &881851732
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,7 +811,7 @@ Transform:
   m_LocalScale: {x: 1.3333328, y: 1.3333328, z: 1.3333334}
   m_Children: []
   m_Father: {fileID: 1808968355}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -864,7 +894,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1012230216}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1012230215
 GameObject:
@@ -894,6 +924,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1808968355}
+  - {fileID: 1073425583}
   - {fileID: 963194228}
   m_Father: {fileID: 1521950645}
   m_RootOrder: 0
@@ -1133,6 +1164,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067432625}
   m_CullTransparentMesh: 1
+--- !u!1 &1073425582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1073425583}
+  m_Layer: 0
+  m_Name: Snake Bodytails
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1073425583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073425582}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1012230216}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1343292011
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,7 +1221,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1343292011}
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0.00000015894572, y: 1.6666669, z: 0}
+  m_LocalPosition: {x: 0.000000079472876, y: 1.0000002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1808968355}
@@ -1341,10 +1402,11 @@ GameObject:
   - component: {fileID: 1808968357}
   - component: {fileID: 1808968356}
   - component: {fileID: 1808968359}
+  - component: {fileID: 1808968361}
   - component: {fileID: 1808968360}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Snake Head
-  m_TagString: Player
+  m_TagString: Snake
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1361,6 +1423,7 @@ Transform:
   m_LocalScale: {x: 0.75000006, y: 0.75000006, z: 0.75}
   m_Children:
   - {fileID: 1343292012}
+  - {fileID: 831470023}
   - {fileID: 881851733}
   m_Father: {fileID: 1012230216}
   m_RootOrder: 0
@@ -1459,7 +1522,25 @@ MonoBehaviour:
   canCollide: 1
   forwardSpeed: 16
   sideLerp: 0.16
+  Length: 5
+  CollideLength: 2
   snakeHolder: {fileID: 1012230216}
+--- !u!114 &1808968361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808968354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6f78b2119c199e48959fbee816e98d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partSize: 0.8
+  connector: {fileID: 831470023}
+  partsHolder: {fileID: 1073425583}
+  partObject: {fileID: 1387530728528101883, guid: 367bcdbe2edfcd6409addf0a9fe97ede, type: 3}
 --- !u!1 &1959294279
 GameObject:
   m_ObjectHideFlags: 0

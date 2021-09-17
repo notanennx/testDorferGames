@@ -57,13 +57,10 @@ public class Checkpoint : MonoBehaviour
     }
 
     // OnTriggerEnter
-    private bool isTriggered = false;
     private void OnTriggerEnter(Collider collider)
     {
-        if ((collider.tag == "Player") && (!isTriggered))
+        if (collider.tag == "Snake")
         {
-            isTriggered = true;
-
             MeshRenderer snakeMesh = collider.gameObject.GetComponent<MeshRenderer>();
                 snakeMesh.material = colorMaterial;
         }
