@@ -263,7 +263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 792070088436955767, guid: 30d702b74d84ea244a5611761d801faf, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 792070088436955767, guid: 30d702b74d84ea244a5611761d801faf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -534,8 +534,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 140587778}
   - {fileID: 1737104130}
+  - {fileID: 140587778}
   m_Father: {fileID: 196312103}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1278,7 +1278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8957895740395532287, guid: f2767350aeeda3c4c9e40351c147fd9c, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8957895740395532287, guid: f2767350aeeda3c4c9e40351c147fd9c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1381,7 +1381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Gems: 0
   MaxGems: 3
-  IsActive: 1
+  IsActive: 0
   Duration: 5
   SpeedScale: 3
 --- !u!4 &1737104130 stripped
@@ -1404,6 +1404,7 @@ GameObject:
   - component: {fileID: 1808968359}
   - component: {fileID: 1808968361}
   - component: {fileID: 1808968360}
+  - component: {fileID: 1808968362}
   m_Layer: 7
   m_Name: Snake Head
   m_TagString: Snake
@@ -1519,11 +1520,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f405fe7cdaf3054da3f208c42f561eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canCollide: 1
   forwardSpeed: 12
   sideLerp: 0.16
   Length: 8
   CollideLength: 2
+  IsAlive: 1
   snakeHolder: {fileID: 1012230216}
   angSensivity: 0.66
   angChangeSpeed: 16
@@ -1544,8 +1545,19 @@ MonoBehaviour:
   connector: {fileID: 831470023}
   partsHolder: {fileID: 1073425583}
   partObject: {fileID: 1387530728528101883, guid: 367bcdbe2edfcd6409addf0a9fe97ede, type: 3}
-  positions: []
-  parts: []
+--- !u!114 &1808968362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808968354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb23396716982643a498e741e3ce81f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CanCollide: 1
 --- !u!1 &1959294279
 GameObject:
   m_ObjectHideFlags: 0

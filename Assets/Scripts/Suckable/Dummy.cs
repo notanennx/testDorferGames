@@ -25,7 +25,13 @@ public class Dummy : Suckable
         }
         else
         {
-            SceneManager.LoadScene("Game");
+            Snake.i.IsAlive = false;
+
+            MeshRenderer snakeRenderer = Snake.i.GetComponent<MeshRenderer>();
+                snakeRenderer.material = Resources.Load<Material>("Materials/Bomb Material");
+
+            //Snake.i.
+            //SceneManager.LoadScene("Game");
         }
     }
 }

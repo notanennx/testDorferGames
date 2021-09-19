@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IObstacle
 {
-    void OnBumped();
+    void OnBumped(GameObject bumpedObject);
 }

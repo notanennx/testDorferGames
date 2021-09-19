@@ -22,7 +22,6 @@ public class Tail : MonoBehaviour
         if (distance > partSize)
         {
             Vector3 direction = (connector.position - positions[0]).normalized;
-            //debugDirection = direction; // DEBUG
 
             positions.Insert(0, positions[0] + direction * partSize);
             positions.RemoveAt(positions.Count - 1);
@@ -42,14 +41,22 @@ public class Tail : MonoBehaviour
     }
 
     // Adds part
-    public void AddPart()
+    public GameObject AddPart(bool canCollide)
     {
         GameObject newPart = Instantiate(partObject, positions[positions.Count - 1], connector.rotation, transform);
             Transform newTransform = newPart.GetComponent<Transform>();
                 newTransform.SetParent(partsHolder);
 
+            // Collission
+            Collision partCollision = newPart.GetComponent<Collision>();
+                partCollision.CanCollide = canCollide;
+
+            // Add to the lists
             parts.Add(newTransform);
             positions.Add(newTransform.position);
+
+        // Return
+        return newPart;
     }
 
     // Removes part

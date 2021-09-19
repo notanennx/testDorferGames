@@ -6,12 +6,17 @@ using UnityEngine.SceneManagement;
 public class Bomb : Suckable, IObstacle
 {
     // OnCollected
-    void IObstacle.OnBumped()
+    void IObstacle.OnBumped(GameObject bumpedObject)
     {
         if (!Fever.i.IsActive)
         {
-            print("BOOMB!");
-            SceneManager.LoadScene("Game");
+            Snake.i.IsAlive = false;
+
+            MeshRenderer bumpedRenderer = bumpedObject.GetComponent<MeshRenderer>();
+                bumpedRenderer.material = gameObject.GetComponent<MeshRenderer>().material;
+
+            //print("BOOMB!");
+            //SceneManager.LoadScene("Game");
         }
     }
 }
