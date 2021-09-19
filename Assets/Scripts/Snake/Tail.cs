@@ -11,11 +11,7 @@ public class Tail : MonoBehaviour
 
     private List<Vector3> positions = new List<Vector3>();
     private List<Transform> parts = new List<Transform>();
-
-    void Awake()
-    {
-        positions.Add(connector.position);
-    }
+    void Awake() => positions.Add(connector.position);
 
     // Update
     void Update()
@@ -26,6 +22,7 @@ public class Tail : MonoBehaviour
         if (distance > partSize)
         {
             Vector3 direction = (connector.position - positions[0]).normalized;
+            //debugDirection = direction; // DEBUG
 
             positions.Insert(0, positions[0] + direction * partSize);
             positions.RemoveAt(positions.Count - 1);
@@ -37,6 +34,10 @@ public class Tail : MonoBehaviour
         for (int i = 0; i < parts.Count; i++)
         {
             parts[i].position = Vector3.Lerp(positions[i + 1], positions[i], (distance / partSize));
+
+            // Angles
+            float angSpeed = Time.deltaTime * (1f + (2f * (parts.Count - i)));
+            parts[i].localRotation = Quaternion.Lerp(parts[i].localRotation, Snake.i.transform.localRotation, angSpeed);
         }
     }
 

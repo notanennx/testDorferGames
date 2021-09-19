@@ -43,6 +43,9 @@ public class Snake : MonoBehaviour
     {
         transform.localPosition = Vector3.Lerp(transform.localPosition, position, (sideLerp * Time.deltaTime));
         transform.localPosition = new Vector3(0f, 0.5f, Mathf.Clamp(transform.localPosition.z, -roadWidth, roadWidth));
+
+        // Rotation
+        angDifference = -Mathf.Clamp((transform.localPosition - position).z * angSensivity, -90f, 90f);
     }
 
     // Update
@@ -51,5 +54,24 @@ public class Snake : MonoBehaviour
     {
         // Forward
         snakeHolder.Translate((-Vector3.right * (forwardSpeed * Time.deltaTime)));
+
+        // Rotation
+        AngleRotation();
+    }
+
+    // Rotation
+    private float angDifference;
+    [SerializeField] private float angSensivity = 0.66f;
+    [SerializeField] private float angChangeSpeed = 16f;
+    [SerializeField] private float angReturnSpeed = 16f;
+    private void AngleRotation()
+    {
+        angDifference = Mathf.Lerp(angDifference, 0, (angReturnSpeed * Time.deltaTime));
+        if (Mathf.Abs(transform.localPosition.z) >= roadWidth)
+        {
+           angDifference = Mathf.Lerp(angDifference, 0, (64f * angReturnSpeed * Time.deltaTime)); 
+        }
+
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0, angDifference, 90f), (angChangeSpeed * Time.deltaTime));  
     }
 }

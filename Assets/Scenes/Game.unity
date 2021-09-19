@@ -920,7 +920,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012230215}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1808968355}
@@ -1520,11 +1520,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canCollide: 1
-  forwardSpeed: 16
+  forwardSpeed: 12
   sideLerp: 0.16
-  Length: 5
+  Length: 8
   CollideLength: 2
   snakeHolder: {fileID: 1012230216}
+  angSensivity: 0.66
+  angChangeSpeed: 16
+  angReturnSpeed: 16
 --- !u!114 &1808968361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1541,6 +1544,8 @@ MonoBehaviour:
   connector: {fileID: 831470023}
   partsHolder: {fileID: 1073425583}
   partObject: {fileID: 1387530728528101883, guid: 367bcdbe2edfcd6409addf0a9fe97ede, type: 3}
+  positions: []
+  parts: []
 --- !u!1 &1959294279
 GameObject:
   m_ObjectHideFlags: 0
