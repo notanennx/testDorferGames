@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Bomb : Suckable, IObstacle
 {
@@ -11,12 +10,10 @@ public class Bomb : Suckable, IObstacle
         if (!Fever.i.IsActive)
         {
             Snake.i.IsAlive = false;
+            UI.i.RestartButton.SetActive(true);
 
             MeshRenderer bumpedRenderer = bumpedObject.GetComponent<MeshRenderer>();
                 bumpedRenderer.material = gameObject.GetComponent<MeshRenderer>().material;
-
-            //print("BOOMB!");
-            //SceneManager.LoadScene("Game");
         }
     }
 }

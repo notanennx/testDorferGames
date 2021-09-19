@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Dummy : Suckable
 {
@@ -26,12 +25,12 @@ public class Dummy : Suckable
         else
         {
             Snake.i.IsAlive = false;
+            UI.i.RestartButton.SetActive(true);
 
             MeshRenderer snakeRenderer = Snake.i.GetComponent<MeshRenderer>();
                 snakeRenderer.material = Resources.Load<Material>("Materials/Bomb Material");
 
-            //Snake.i.
-            //SceneManager.LoadScene("Game");
+
         }
     }
 }
