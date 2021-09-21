@@ -44,14 +44,17 @@ public class Sucker : MonoBehaviour
     }
 
     // Rescale
-    private float scaleSpeed = (0.95f);
+    private float scaleSpeed = 4f;
     private void Rescale(Transform target, float speed)
     {
+        // Set
+        float substractScale = (scaleSpeed * Time.deltaTime);
+
         // Setup
         Vector3 newScale = new Vector3();
-            newScale.x = Mathf.Max(0f, (scaleSpeed * target.localScale.x));
-            newScale.y = Mathf.Max(0f, (scaleSpeed * target.localScale.y));
-            newScale.z = Mathf.Max(0f, (scaleSpeed * target.localScale.z));
+            newScale.x = Mathf.Max(0f, (target.localScale.x - substractScale));
+            newScale.y = Mathf.Max(0f, (target.localScale.y - substractScale));
+            newScale.z = Mathf.Max(0f, (target.localScale.z - substractScale));
 
         // Apply
         target.localScale = newScale;

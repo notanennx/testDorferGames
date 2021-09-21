@@ -18,10 +18,15 @@ public class SegmentsManager : MonoBehaviour
 
     // Create
     private int segmentsPassed;
+    private float[] mirrorModifiers = new float[] {-1, 1};
     [SerializeField] private int segmentsToCheckpoint;
     public void CreateSegment(Vector3 position)
     {
+        // Passed
         segmentsPassed += 1;
+
+        // Mirroring
+        position = new Vector3(position.x, position.y, position.z * mirrorModifiers[Random.Range(0, mirrorModifiers.Length)]);
 
         // Checking
         if (segmentsPassed == segmentsToCheckpoint)
