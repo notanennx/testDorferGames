@@ -35,7 +35,7 @@ public class Tail : MonoBehaviour
             parts[i].position = Vector3.Lerp(positions[i + 1], positions[i], (distance / partSize));
 
             // Angles
-            float angSpeed = Time.deltaTime * (1f + (2f * (parts.Count - i)));
+            float angSpeed = Time.deltaTime * (1.4f + (2f * (parts.Count - i)));
             parts[i].localRotation = Quaternion.Lerp(parts[i].localRotation, Snake.i.transform.localRotation, angSpeed);
         }
     }

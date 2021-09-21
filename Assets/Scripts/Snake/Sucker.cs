@@ -28,8 +28,8 @@ public class Sucker : MonoBehaviour
                     Rescale(suckObject, 0.0075f);
 
                     // Rotate
-                    Vector3 suckDirection = Vector3.RotateTowards(suckObject.forward, posDiff, (Time.deltaTime * suckSpeed * 2f), 0f);
-                    suckObject.localRotation = Quaternion.LookRotation(suckDirection);
+                    Quaternion suckDirection = Quaternion.Euler(snakeHead.localEulerAngles.x, snakeHead.localEulerAngles.y, 90f);
+                    suckObject.localRotation = Quaternion.Slerp(suckObject.localRotation, suckDirection, (1.5f * Time.deltaTime * suckSpeed));
 
                     // Remove
                     float sqrDistance = posDiff.sqrMagnitude;
