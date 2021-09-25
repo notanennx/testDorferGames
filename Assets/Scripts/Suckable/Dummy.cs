@@ -20,7 +20,7 @@ public class Dummy : Suckable
         if ((Fever.i.IsActive) || (snakeMesh.material.name == material.name))
         {
             Score.i.Dummies += 1;
-            Events.i.OnDummyCollected?.Invoke();
+            Events.OnDummyCollected?.Invoke();
         }
         else
         {

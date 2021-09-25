@@ -3,25 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+using System;
+
 public class Events : MonoBehaviour
 {
-    public static Events i;
-
     // Events
-    public UnityEvent OnGemCollected;
-    public UnityEvent OnDummyCollected;
-    //public delegate void GemCollected();
-    //public static event GemCollected OnGemCollected;
-
-    //public delegate void DummyCollected();
-    //public static event DummyCollected OnDummyCollected;
-
-    //public event Action<int> OnGemCollected;
-    //public event Action<int> OnDummyCollected;
-
-    // Awake
-    private void Awake()
-    {
-        i = this;
-    }
+    public static Action OnGemCollected;
+    public static Action OnDummyCollected;
 }

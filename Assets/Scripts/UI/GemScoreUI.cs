@@ -7,8 +7,14 @@ public class GemScoreUI : MonoBehaviour
 {
     [SerializeField] TMP_Text gemScore;
 
+    // Enabled
+    private void OnEnable() => Events.OnGemCollected += UpdateGems;
+
+    // Disabled
+    private void OnDisable() => Events.OnGemCollected -= UpdateGems;
+
     // Updates score
-    public void UpdateScore()
+    private void UpdateGems()
     {
         gemScore.text = Score.i.Gems.ToString();
     }
