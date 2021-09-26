@@ -5,12 +5,14 @@ using UnityEngine;
 public class Snake : MonoBehaviour
 {
     [SerializeField] private float forwardSpeed = 16f;
-    [SerializeField] [Range(0.01f, 1f)] private float sideLerp = 0.16f;
 
     // Snake
     public int Length = 3;
     public int CollideLength = 2;
+    public float SpeedScale = 1f;
+
     [HideInInspector] public bool IsAlive = true;
+    [HideInInspector] public bool IsInvincible = false;
 
     // Awake
     public static Snake i;
@@ -36,11 +38,11 @@ public class Snake : MonoBehaviour
 
     // MoveToSide
     private float roadWidth = 4f;
-    public void MoveToSide(Vector3 position)
+    public void SetDestination(Vector3 position, float sideLerp)
     {
         if (!IsAlive) return;
 
-        transform.localPosition = Vector3.Lerp(transform.localPosition, position, (sideLerp * Time.deltaTime));
+        transform.localPosition = Vector3.Lerp(transform.localPosition, position, (sideLerp * SpeedScale * Time.deltaTime));
         transform.localPosition = new Vector3(0f, 0.5f, Mathf.Clamp(transform.localPosition.z, -roadWidth, roadWidth));
 
         // Rotation
@@ -54,7 +56,7 @@ public class Snake : MonoBehaviour
         if (!IsAlive) return;
 
         // Forward
-        snakeHolder.Translate((-Vector3.right * (forwardSpeed * Time.deltaTime)));
+        snakeHolder.Translate((-Vector3.right * (forwardSpeed * SpeedScale * Time.deltaTime)));
 
         // Rotation
         AngleRotation();

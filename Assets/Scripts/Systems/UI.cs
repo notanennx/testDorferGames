@@ -10,6 +10,12 @@ public class UI : MonoBehaviour
     public static UI i;
     void Awake() => i = this;
 
+    // Start
+    private void Start()
+    {
+        Cursor.visible = false;
+    }
+
     // Restart
     public GameObject RestartButton;
     public void RestartGame()

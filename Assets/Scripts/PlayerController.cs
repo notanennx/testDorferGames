@@ -9,8 +9,13 @@ public class PlayerController : MonoBehaviour
     private void Awake() => i = this;
 
     // Update
+    [HideInInspector] public bool IsActive = true;
     private void Update()
     {
+        // Do nothing!
+        if (!IsActive) return;
+
+        // LMB or touch pressed!
         if (Input.GetMouseButton(0))
         {
             // Get
@@ -23,7 +28,7 @@ public class PlayerController : MonoBehaviour
             Vector3 newPos = (curPos + new Vector3(0f, 0f, posDiff));
 
             // Sidemoving
-            Snake.i.MoveToSide(newPos);
+            Snake.i.SetDestination(newPos, 0.16f);
         }
     }
 }

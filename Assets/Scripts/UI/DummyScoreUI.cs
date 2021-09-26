@@ -8,16 +8,14 @@ public class DummyScoreUI : MonoBehaviour
     [SerializeField] TMP_Text dummyScore;
 
     // Enabled
-    private void OnEnable() => Events.OnDummyCollected += UpdateDummies;
+    private void OnEnable() => Score.i.OnDummiesScoreUpdated += UpdateDummies;
 
     // Disabled
-    private void OnDisable() => Events.OnDummyCollected -= UpdateDummies;
-
-    //private void OnEnable() => Events.OnDummyCollected += UpdateDummies;
+    private void OnDisable() => Score.i.OnDummiesScoreUpdated -= UpdateDummies;
 
     // Updates score
-    private void UpdateDummies()
+    private void UpdateDummies(int amount)
     {
-        dummyScore.text = Score.i.Dummies.ToString();
+        dummyScore.text = amount.ToString();
     }
 }

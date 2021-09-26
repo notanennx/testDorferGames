@@ -67,27 +67,20 @@ public class Sucker : MonoBehaviour
         Suckable suckable = other.gameObject.GetComponent<Suckable>();
         if (suckable)
         {
-            // Swallow everything!
-            if (Fever.i.IsActive)
+            if (!suckable.IsSucked)
             {
-                if (!suckable.IsSucked)
+                if (Snake.i.IsInvincible)
                 {
                     suckPool.Add(other.gameObject.transform);
                     suckable.OnSucked(suckerHolder);
-
-                    suckable.IsSucked = true;
                 }
-            }
-            // 
-            else
-            {
-                if ((!suckable.IsSucked) && (suckable.IsSuckable))
+                else if (suckable.IsSuckable)
                 {
                     suckPool.Add(other.gameObject.transform);
                     suckable.OnSucked(suckerHolder);
-
-                    suckable.IsSucked = true;
                 }
+
+                suckable.IsSucked = true;
             }
         }
     }

@@ -997,8 +997,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce54846bc6b34f44a5453de23799ce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Gems: 0
-  Dummies: 0
 --- !u!114 &689960659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1341,12 +1339,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 0.65
   m_ReferenceResolution: {x: 1080, y: 720}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 1
+  m_ScreenMatchMode: 2
+  m_MatchWidthOrHeight: 0.173
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1732,6 +1730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8befe1465f1636f48be737766c3343f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsActive: 1
 --- !u!114 &1521950647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1746,7 +1745,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Gems: 0
   MaxGems: 3
-  IsActive: 0
   Duration: 5
   SpeedScale: 3
 --- !u!4 &1737104130 stripped
@@ -1967,12 +1965,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f405fe7cdaf3054da3f208c42f561eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardSpeed: 8
-  sideLerp: 0.16
+  forwardSpeed: 10
   Length: 8
   CollideLength: 2
   IsAlive: 1
+  IsInvincible: 0
   snakeHolder: {fileID: 1012230216}
+  SpeedScale: 1
   angSensivity: 0.66
   angChangeSpeed: 16
   angReturnSpeed: 16

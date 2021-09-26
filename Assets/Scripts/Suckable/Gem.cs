@@ -25,7 +25,7 @@ public class Gem : Suckable
     {
         base.OnSucked(suckerTransform);
 
-        Score.i.Gems += 1;
+        Score.i.AddGems(1);
         Events.OnGemCollected?.Invoke();
     }
 }

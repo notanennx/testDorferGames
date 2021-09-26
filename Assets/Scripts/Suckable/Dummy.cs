@@ -17,14 +17,16 @@ public class Dummy : Suckable
         base.OnSucked(suckerTransform);
 
         MeshRenderer snakeMesh = Snake.i.GetComponent<MeshRenderer>();
-        if ((Fever.i.IsActive) || (snakeMesh.material.name == material.name))
+        if ((Snake.i.IsInvincible) || (snakeMesh.material.name == material.name))
         {
-            Score.i.Dummies += 1;
+            Score.i.AddDummies(1);
             Events.OnDummyCollected?.Invoke();
         }
         else
         {
             Snake.i.IsAlive = false;
+
+            Cursor.visible = true;
             UI.i.RestartButton.SetActive(true);
 
             MeshRenderer snakeRenderer = Snake.i.GetComponent<MeshRenderer>();
