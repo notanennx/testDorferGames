@@ -53,6 +53,7 @@ public class Checkpoint : MonoBehaviour
         {
             ParticleSystem.MainModule particleSettings = pointParticle.main;
                 particleSettings.startColor = colorMaterial.color;
+                particleSettings.prewarm = true;
         }
     }
 
