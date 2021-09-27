@@ -59,7 +59,7 @@ public class Snake : MonoBehaviour
     private void ResizeBodyparts()
     {
         float resizeSpeed = (1f * Time.deltaTime);
-        if (IsInvincible())
+        if (IFrames > Time.time)
         {
             foreach (Transform bodyPart in bodyParts)
                 snakeHolder.localScale = Vector3.Lerp(snakeHolder.localScale, new Vector3(2.4f, 2.4f, 2.4f), resizeSpeed);
@@ -74,7 +74,12 @@ public class Snake : MonoBehaviour
     // Invincible?
     public bool IsInvincible()
     {
-        return (IFrames > Time.time);
+        return ((IFrames > Time.time) || (snakeHolder.localScale.x > 1.1f));
+    }
+
+    public float IsScaled(bool isInvincible)
+    {
+        return (isInvincible == true ? 0f : 1f);
     }
 
     // MoveToSide
@@ -83,8 +88,9 @@ public class Snake : MonoBehaviour
     {
         if (!IsAlive) return;
 
+        float roadLimit = (roadWidth - (snakeHolder.localScale.x - (1f * IsScaled(IsInvincible()))));
         transform.localPosition = Vector3.Lerp(transform.localPosition, position, (sideLerp * SpeedScale * Time.deltaTime));
-        transform.localPosition = new Vector3(0f, 0.5f, Mathf.Clamp(transform.localPosition.z, -roadWidth, roadWidth));
+        transform.localPosition = new Vector3(0f, 0.5f, Mathf.Clamp(transform.localPosition.z, -roadLimit, roadLimit));
 
         // Rotation
         angDifference = -Mathf.Clamp((transform.localPosition - position).z * angSensivity, -90f, 90f);
@@ -115,7 +121,7 @@ public class Snake : MonoBehaviour
         if (!IsAlive) return;
         
         angDifference = Mathf.Lerp(angDifference, 0, (angReturnSpeed * Time.deltaTime));
-        if (Mathf.Abs(transform.localPosition.z) >= roadWidth)
+        if (Mathf.Abs(transform.localPosition.z) >= (roadWidth - snakeHolder.localScale.x))
         {
            angDifference = Mathf.Lerp(angDifference, 0, (64f * angReturnSpeed * Time.deltaTime)); 
         }

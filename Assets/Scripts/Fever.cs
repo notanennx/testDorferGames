@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using System;
+using TMPro;
 
 public class Fever : MonoBehaviour
 {
@@ -52,6 +53,9 @@ public class Fever : MonoBehaviour
         // Do nothing if fever is on!
         if (isActive) return;
 
+        // Color
+        SetTextColor(gemsColor);
+
         // Sequental gems collected!
         Gems += 1;
         if (Gems >= MaxGems)
@@ -69,7 +73,13 @@ public class Fever : MonoBehaviour
 
         // Reset gems
         Gems = 0;
+        SetTextColor(new Color(1f, 1f, 1f, 1f));
     }
+
+    // Setup score UI color
+    [SerializeField] private Color gemsColor;
+    [SerializeField] private TMP_Text gemsText;
+    private void SetTextColor(Color newColor) => gemsText.color = newColor;
 
     // For enabling or disabling fever!
     private bool isActive = false;
