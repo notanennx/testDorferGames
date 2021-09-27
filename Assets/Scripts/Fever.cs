@@ -36,7 +36,10 @@ public class Fever : MonoBehaviour
     {
         // Move snake
         if (isActive)
-            Snake.i.SetDestination(new Vector3(0f, 0f, 0f), 1.28);
+        {
+            Snake.i.IFrames = Time.time + 2f;
+            Snake.i.SetDestination(new Vector3(0f, 0f, 0f), 1.28f);
+        }
 
         // Disable fever
         if ((activeTime < Time.time) && (isActive))
@@ -80,7 +83,6 @@ public class Fever : MonoBehaviour
         {
             // Snake changes
             Snake.i.SpeedScale = SpeedScale;
-            Snake.i.IsInvincible = true;
 
             // Controller changes and time
             activeTime = Time.time + Duration;
@@ -91,7 +93,6 @@ public class Fever : MonoBehaviour
         {
             // Snake changes
             Snake.i.SpeedScale = 1f;
-            Snake.i.IsInvincible = false;
             
             // Resetting gems and controller
             Score.i.SetGems(0);

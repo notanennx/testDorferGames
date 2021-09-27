@@ -69,7 +69,7 @@ public class Sucker : MonoBehaviour
         {
             if (!suckable.IsSucked)
             {
-                if (Snake.i.IsInvincible)
+                if (Snake.i.IsInvincible())
                 {
                     suckPool.Add(other.gameObject.transform);
                     suckable.OnSucked(suckerHolder);

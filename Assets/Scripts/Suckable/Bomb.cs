@@ -7,7 +7,7 @@ public class Bomb : Suckable, IObstacle
     // OnCollected
     void IObstacle.OnBumped(GameObject bumpedObject)
     {
-        if (!Snake.i.IsInvincible)
+        if (!Snake.i.IsInvincible())
         {
             Snake.i.IsAlive = false;
 

@@ -17,7 +17,7 @@ public class Dummy : Suckable
         base.OnSucked(suckerTransform);
 
         MeshRenderer snakeMesh = Snake.i.GetComponent<MeshRenderer>();
-        if ((Snake.i.IsInvincible) || (snakeMesh.material.name == material.name))
+        if ((Snake.i.IsInvincible()) || (snakeMesh.material.name == material.name))
         {
             Score.i.AddDummies(1);
             Events.OnDummyCollected?.Invoke();

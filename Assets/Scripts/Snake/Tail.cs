@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class Tail : MonoBehaviour
 {
-    [SerializeField] private float partSize = 1f;
     [SerializeField] private Transform connector;
+    [SerializeField] private Transform snakeHolder;
     [SerializeField] private Transform partsHolder;
     [SerializeField] private GameObject partObject;
 
     private List<Vector3> positions = new List<Vector3>();
     private List<Transform> parts = new List<Transform>();
     void Awake() => positions.Add(connector.position);
-
+    
     // Update
     void Update()
     {
         float distance = (connector.position - positions[0]).magnitude;
+        float partSize = (0.8f * snakeHolder.localScale.x);
 
         // Change positions
         if (distance > partSize)

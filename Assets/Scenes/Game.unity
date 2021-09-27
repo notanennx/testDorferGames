@@ -1968,13 +1968,13 @@ MonoBehaviour:
   forwardSpeed: 10
   Length: 8
   CollideLength: 2
-  IsAlive: 1
-  IsInvincible: 0
-  snakeHolder: {fileID: 1012230216}
   SpeedScale: 1
+  IsAlive: 1
+  IFrames: 0
+  snakeHolder: {fileID: 1012230216}
   angSensivity: 0.66
   angChangeSpeed: 16
-  angReturnSpeed: 16
+  angReturnSpeed: 32
 --- !u!114 &1808968361
 MonoBehaviour:
   m_ObjectHideFlags: 0

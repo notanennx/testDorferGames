@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Snake : MonoBehaviour
 {
-    [SerializeField] private float forwardSpeed = 16f;
-
     // Snake
     public int Length = 3;
     public int CollideLength = 2;
     public float SpeedScale = 1f;
 
+    [SerializeField] private float forwardSpeed = 16f;
+    [SerializeField] private Transform snakeHolder;
+    [SerializeField] private Transform moveTransform;
+
     [HideInInspector] public bool IsAlive = true;
-    [HideInInspector] public bool IsInvincible = false;
+    [HideInInspector] public float IFrames = 0f;
 
     // Awake
     public static Snake i;
@@ -22,18 +24,57 @@ public class Snake : MonoBehaviour
     private Tail tail;
     private void Start()
     {
+        //IFrames = Time.time + 10000000000f;
+
+        // Head
+        AddBodypart(transform);
+
+        // Tail
         tail = GetComponent<Tail>();
         for (int i = 0; i < Length; i++)
         {
+            GameObject tailObject = null;
             if (i < CollideLength)
             {
-                tail.AddPart(true);
+                tailObject = tail.AddPart(true);
             }
             else
             {
-                tail.AddPart(false);
-            }   
+                tailObject = tail.AddPart(false);
+            }
+
+            // Add to bodyparts
+            AddBodypart(tailObject.GetComponent<Transform>());
         }
+    }
+
+    // Bodyparts
+    private List<Transform> bodyParts = new List<Transform>();
+    private void AddBodypart(Transform newTransform)
+    {
+        bodyParts.Add(newTransform);
+    }
+
+    // Resizing
+    private void ResizeBodyparts()
+    {
+        float resizeSpeed = (1f * Time.deltaTime);
+        if (IsInvincible())
+        {
+            foreach (Transform bodyPart in bodyParts)
+                snakeHolder.localScale = Vector3.Lerp(snakeHolder.localScale, new Vector3(2.4f, 2.4f, 2.4f), resizeSpeed);
+        }
+        else
+        {
+            foreach (Transform bodyPart in bodyParts)
+                snakeHolder.localScale = Vector3.Lerp(snakeHolder.localScale, new Vector3(1f, 1f, 1f), resizeSpeed);
+        }
+    }
+
+    // Invincible?
+    public bool IsInvincible()
+    {
+        return (IFrames > Time.time);
     }
 
     // MoveToSide
@@ -50,13 +91,15 @@ public class Snake : MonoBehaviour
     }
 
     // Update
-    [SerializeField] private Transform snakeHolder;
     private void Update()
     {
         if (!IsAlive) return;
 
         // Forward
-        snakeHolder.Translate((-Vector3.right * (forwardSpeed * SpeedScale * Time.deltaTime)));
+        moveTransform.Translate((-Vector3.right * (forwardSpeed * SpeedScale * Time.deltaTime)));
+
+        // Resizing
+        ResizeBodyparts();
 
         // Rotation
         AngleRotation();
